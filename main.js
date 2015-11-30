@@ -14,7 +14,7 @@ function tweeny(s, tween) {
     return ( (s = '' + s) && s?  s[0] + (tween ? (s.length > 1 ? tween : '' ) : s[0]) + tweeny(s.substring(1, s.length), tween) : '');
 }
 
-// a more robust version of basic function 2 (cleaner, simpler, handles undefined and still handles empty string and most numbers but does not cover function 4 case)
+// a more robust version of basic function 2 (cleaner, simpler, handles undefined and still handles empty string but does not cover function 4 case)
 /*
 function tweeny(s){
     return s=(''+s) && s && s.split('').reduce(function(p,c){return p+c+c},'');
