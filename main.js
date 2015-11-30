@@ -9,36 +9,14 @@ function smallestDiffWith1000 (a,b) {
  
 // function 2 and function 4 are identical. Recursively doubles characters by default, or add optional second tweener character for tweening. Bonus: handles empty string and numbers.
 function tweeny(s, tween) {
-    // stringify s using single "=" of assignment, then return first 
-    // char plus, if optional second tween char is truthy, return  if 
-    // remaining length greater than 1, else again first char, then 
-    // recurse over remaining string, preserving second argument flag
     return ( (s = '' + s) ?  s[0] + (tween ? (s.length > 1 ? tween : '' ) : s[0]) + tweeny(s.substring(1, s.length), tween) : '');
 }
 
-
 // function 3
 function splitter(arr) {
-    return arr.length > 1 && !((this.sum = arr.reduce(function(p,c){return p+c}, 0)) % 2) && arr.some(function(x,i,a){return (this.acc += x) == this.half && (i !== a.length -1)}, {half: this.sum/2, acc: 0});
+    return arr.length > 1 && !((this.sum = arr.reduce(function(p,c){return p+c}, 0))%2) && arr.slice(0,-1).some(function(x,i,a){return (this.acc+=x) == sum/2}, {acc: 0});   
 }
 
-// a more readable version of function 3
-// if splittable, there must be a left subarray which equals the remaining right subarray, so at some point the right subarray must equal half the total sum.
-// one simple algorithm adds up the entire list to get a total, then starts over at the end summing until it finds a sum equal to half of the total. Could also start re-summing from beginning.
-/*
-function splitter(arr) {
-    var frontSum = backSum = 0;
-    if (arr.length > 1) {
-        frontSum = arr.reduce(function(p,c) {return p+c});
-        for (var i = arr.length - 1; i > 0; i--) {
-            if ((backSum += arr[i]) == frontSum * .5) {
-                return true;
-            }
-        }
-    }
-    return false;  
-}
-*/
 
 // function 4 - recursive
 // IDENTICAL to function 2 (which is already recursive); just add optional second param to serve as "tween" character.
@@ -76,10 +54,10 @@ console.log(splitter([])); // short circuit false because too short
 console.log(splitter([1])); // short circuit false because too short
 console.log(splitter([1,2,3,4,5,6,6])); // short circuit false because sum is odd
 console.log(splitter([2,-2]));
+console.log(splitter([5,2,1,1,1,2]));
 console.log(splitter([1,2,3]));
 console.log(splitter([1,2,3,4,2,0,0]));
 console.log(splitter([5,1,1,1,1,1]));
-console.log(splitter([5,2,1,1,1,2]));
 console.log(splitter([1,2,-3,0]));
 console.log('\n\n---------');
 
